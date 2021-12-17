@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: cust_detail_ds_stg
+    columns: 
+      - name: CUSTOMER_KEY
+        tests:
+          - unique
+          - not_null
+  - name: order_detail_fs_stg
+    columns: 
+      - name: INTEGRATION_ID
+        tests:
+          - unique
+          - not_null
+      - name: ORDERSTATUS
+        tests:
+          - accepted_values:
+              values:
+                - P
+                - O
+                - F

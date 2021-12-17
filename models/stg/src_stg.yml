@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: stg_view
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+    tables:
+      - name: ORDERS
+        description: raw order data
+        columns:
+          - name: O_ORDERKEY
+            tests:
+              - unique
+              - not_null
+      - name: LINEITEM
+        description: raw order line data
+        columns:
+          - name: L_ORDERKEY ||'~'|| L_LINENUMBER
+            tests:
+              - unique
+              - not_null
+      - name: NATION
+        description: raw nation data
+        columns:
+          - name: N_NATIONKEY
+            tests:
+              - unique
+              - not_null
+      - name: CUSTOMER
+        description: raw customer data
+        columns:
+          - name: C_CUSTKEY
+            tests:
+              - unique
+              - not_null
+
